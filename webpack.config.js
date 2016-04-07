@@ -24,20 +24,22 @@ module.exports = {
       {
         test: /\.jsx?$/,
         loader: 'babel-loader',
-        exclude: /node_modules(?!\/shared-components)|shared-lib/,
+        exclude: /node_modules/,
+        query: {
+          presets: ['es2015', 'react'],
+        },
       },
       {
         test: /\.jsx?$/,
         loader: 'eslint-loader',
-        exclude: /node_modules|shared-lib/,
+        exclude: /node_modules/,
       },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      hash: true,
       inject: true,
-      template: 'src/index.html',
+      template: 'index.html',
     }),
   ],
 };
